@@ -110,9 +110,9 @@ wget https://raw.github.com/virtuecenter/server-config-files/master/php-fpm -O /
 chmod +x /etc/init.d/php-fpm
 wget https://raw.github.com/virtuecenter/server-config-files/master/php-fpm.conf -O /usr/local/etc/php-fpm.conf
 wget https://raw.github.com/virtuecenter/server-config-files/master/php.ini -O /usr/local/lib/php.ini
-wget https://raw.github.com/virtuecenter/server-config-files/master/jetty /etc/default/jetty
-wget https://raw.github.com/virtuecenter/server-config-files/master/solr.xml /usr/share/solr/solr.xml
-wget https://raw.github.com/virtuecenter/server-config-files/master/web.xml /etc/solr/web.xml
+wget https://raw.github.com/virtuecenter/server-config-files/master/jetty -O /etc/default/jetty
+wget https://raw.github.com/virtuecenter/server-config-files/master/solr.xml -O /usr/share/solr/solr.xml
+wget https://raw.github.com/virtuecenter/server-config-files/master/web.xml -O /etc/solr/web.xml
 
 #start everything
 /etc/init.d/nginx start
@@ -120,3 +120,4 @@ wget https://raw.github.com/virtuecenter/server-config-files/master/web.xml /etc
 /etc/init.d/mongodb start
 /etc/init.d/postgresql start
 /etc/init.d/memcached start
+/etc/init.d/jetty start
