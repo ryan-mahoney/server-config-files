@@ -1,3 +1,6 @@
+#be root
+sudo bash
+
 #nging
 apt-get install nginx
 
@@ -97,3 +100,11 @@ apt-get update
 apt-get install mongodb-10gen
 pecl install mongo
 
+#configuration
+wget https://raw.github.com/virtuecenter/server-config-files/master/fastcgi_params -O /etc/nginx/fastcgi_params
+wget https://raw.github.com/virtuecenter/server-config-files/master/nginx.conf -O /etc/nginx/nginx.conf
+wget https://raw.github.com/virtuecenter/server-config-files/master/php-fpm -O /etc/init.d/php-fpm
+chmod +x /etc/init.d/php-fpm
+wget https://raw.github.com/virtuecenter/server-config-files/master/php-fpm.conf -O /usr/local/etc/php-fpm.conf
+wget https://raw.github.com/virtuecenter/server-config-files/master/php.ini -O /usr/local/lib/php.ini
+/etc/init.d/php-fpm start
