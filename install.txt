@@ -1,0 +1,99 @@
+#nging
+apt-get install nginx
+
+#php
+cd /usr/local/src
+apt-get install libxml2-dev
+wget http://www.php.net/get/php-5.3.6.tar.gz/from/us2.php.net/mirror -O php-5.3.6.tar.gz
+tar xzf ./php-5.3.6.tar.gz
+cd ./php-5.3.6
+./configure --enable-fpm
+make
+make install
+
+#php extensions
+apt-get install autoconf
+apt-get install libcurl3-dev
+cd ext/curl
+phpize
+./configure
+make 
+make install
+
+cd ext/ftp
+phpize
+./configure
+make 
+make install
+
+cd ext/gd
+apt-get install libjpeg62-dev
+apt-get install libpng12-0-dev
+apt-get install libfreetype6-dev
+ln -s /usr/lib32/libjpeg.so /usr/lib/
+ln -s /usr/lib32/libpng.so /usr/lib/
+ln -s /usr/lib32/libfreetype.so /usr/lib/
+phpize
+./configure --with-jpeg-dir=/usr/lib/ --with-png-dir=/usr/lib/ --with-freetype-dir=/usr/lib/
+make
+make install
+
+cd etc/pcntl
+phpize
+./configure
+make
+make install
+
+#postgres
+cd ext/pdo
+apt-get install postgresql-8.4
+apt-get install postgresql-server-dev-8.4
+phpize
+./configure
+make
+make install
+
+cd ext/pdo_pgsql
+phpize
+./configure
+make
+make install
+
+cd etc/soap
+phpize
+./configure
+make
+make install
+
+cd etc/sockets
+phpize
+./configure
+make
+make install
+
+cd ext/tidy
+apt-get install libtidy-dev
+phpize
+./configure
+make
+make install
+
+cd etc/zip
+phpize
+./configure
+make
+make install
+
+pecl install apc
+
+#memcached
+apt-get install memcached libmemcache-dev
+pecl install memcache
+
+#mongo
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' >> /etc/apt/sources.list
+apt-get update
+apt-get install mongodb-10gen
+pecl install mongo
+
