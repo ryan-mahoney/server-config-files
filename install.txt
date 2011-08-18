@@ -100,6 +100,9 @@ apt-get update
 apt-get install mongodb-10gen
 pecl install mongo
 
+#solr
+apt-get install solr-jetty
+
 #configuration
 wget https://raw.github.com/virtuecenter/server-config-files/master/fastcgi_params -O /etc/nginx/fastcgi_params
 wget https://raw.github.com/virtuecenter/server-config-files/master/nginx.conf -O /etc/nginx/nginx.conf
@@ -107,4 +110,13 @@ wget https://raw.github.com/virtuecenter/server-config-files/master/php-fpm -O /
 chmod +x /etc/init.d/php-fpm
 wget https://raw.github.com/virtuecenter/server-config-files/master/php-fpm.conf -O /usr/local/etc/php-fpm.conf
 wget https://raw.github.com/virtuecenter/server-config-files/master/php.ini -O /usr/local/lib/php.ini
+wget https://raw.github.com/virtuecenter/server-config-files/master/jetty /etc/default/jetty
+wget https://raw.github.com/virtuecenter/server-config-files/master/solr.xml /usr/share/solr/solr.xml
+wget https://raw.github.com/virtuecenter/server-config-files/master/web.xml /etc/solr/web.xml
+
+#start everything
+/etc/init.d/nginx start
 /etc/init.d/php-fpm start
+/etc/init.d/mongodb start
+/etc/init.d/postgresql start
+/etc/init.d/memcached start
