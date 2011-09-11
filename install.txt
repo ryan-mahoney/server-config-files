@@ -1,6 +1,9 @@
 #be root
 sudo bash
 
+#add a user for the webserver
+adduser webuser
+
 #nging
 apt-get install nginx
 
