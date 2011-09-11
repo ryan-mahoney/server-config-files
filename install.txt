@@ -23,13 +23,13 @@ phpize
 make 
 make install
 
-cd ext/ftp
+cd ../ext/ftp
 phpize
 ./configure
 make 
 make install
 
-cd ext/gd
+cd ../ext/gd
 apt-get install libjpeg62-dev
 apt-get install libpng12-0-dev
 apt-get install libfreetype6-dev
@@ -41,14 +41,20 @@ phpize
 make
 make install
 
-cd etc/pcntl
+cd ../ext/mbstring
+phpize
+./configure
+make
+make install
+
+cd ../ext/pcntl
 phpize
 ./configure
 make
 make install
 
 #postgres
-cd ext/pdo
+cd ../ext/pdo
 apt-get install postgresql-8.4
 apt-get install postgresql-server-dev-8.4
 phpize
@@ -56,32 +62,32 @@ phpize
 make
 make install
 
-cd ext/pdo_pgsql
+cd ../ext/pdo_pgsql
 phpize
 ./configure
 make
 make install
 
-cd etc/soap
+cd ../ext/soap
 phpize
 ./configure
 make
 make install
 
-cd etc/sockets
+cd ../ext/sockets
 phpize
 ./configure
 make
 make install
 
-cd ext/tidy
+cd ../ext/tidy
 apt-get install libtidy-dev
 phpize
 ./configure
 make
 make install
 
-cd etc/zip
+cd ../ext/zip
 phpize
 ./configure
 make
@@ -98,7 +104,15 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' >> /etc/apt/sources.list
 apt-get update
 apt-get install mongodb-10gen
-pecl install mongo
+#pecl install mongo
+cd ..
+wget http://pecl.php.net/get/mongo-1.2.3.tgz
+tar xzf mongo-1.2.3.tgz
+cd mongo-1.2.3
+phpize
+./configure
+make
+make install
 
 #solr
 apt-get install solr-jetty
