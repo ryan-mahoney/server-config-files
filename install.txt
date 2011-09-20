@@ -26,13 +26,13 @@ phpize
 make 
 make install
 
-cd ../ext/ftp
+cd ../ftp
 phpize
 ./configure
 make 
 make install
 
-cd ../ext/gd
+cd ../gd
 apt-get install libjpeg62-dev
 apt-get install libpng12-0-dev
 apt-get install libfreetype6-dev
@@ -44,20 +44,20 @@ phpize
 make
 make install
 
-cd ../ext/mbstring
+cd ../mbstring
 phpize
 ./configure
 make
 make install
 
-cd ../ext/pcntl
+cd ../pcntl
 phpize
 ./configure
 make
 make install
 
 #postgres
-cd ../ext/pdo
+cd ../pdo
 apt-get install postgresql-8.4
 apt-get install postgresql-server-dev-8.4
 phpize
@@ -65,32 +65,32 @@ phpize
 make
 make install
 
-cd ../ext/pdo_pgsql
+cd ../pdo_pgsql
 phpize
 ./configure
 make
 make install
 
-cd ../ext/soap
+cd ../soap
 phpize
 ./configure
 make
 make install
 
-cd ../ext/sockets
+cd ../sockets
 phpize
 ./configure
 make
 make install
 
-cd ../ext/tidy
+cd ../tidy
 apt-get install libtidy-dev
 phpize
 ./configure
 make
 make install
 
-cd ../ext/zip
+cd ../zip
 phpize
 ./configure
 make
@@ -103,19 +103,19 @@ apt-get install memcached libmemcache-dev
 pecl install memcache
 
 #mongo
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' >> /etc/apt/sources.list
 apt-get update
 apt-get install mongodb-10gen
-#pecl install mongo
-cd ..
-wget http://pecl.php.net/get/mongo-1.2.3.tgz
-tar xzf mongo-1.2.3.tgz
-cd mongo-1.2.3
-phpize
-./configure
-make
-make install
+pecl install mongo
+#cd ..
+#wget http://pecl.php.net/get/mongo-1.2.3.tgz
+#tar xzf mongo-1.2.3.tgz
+#cd mongo-1.2.3
+#phpize
+#./configure
+#make
+#make install
 
 #solr
 apt-get install solr-jetty
@@ -125,6 +125,13 @@ wget https://raw.github.com/virtuecenter/server-config-files/master/fastcgi_para
 wget https://raw.github.com/virtuecenter/server-config-files/master/nginx.conf -O /etc/nginx/nginx.conf
 wget https://raw.github.com/virtuecenter/server-config-files/master/php-fpm -O /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
+ln -s /etc/init.d/php-fpm /etc/rc2.d/S20php-fpm
+ln -s /etc/init.d/php-fpm /etc/rc3.d/S20php-fpm
+ln -s /etc/init.d/php-fpm /etc/rc4.d/S20php-fpm
+ln -s /etc/init.d/php-fpm /etc/rc5.d/S20php-fpm
+ln -s /etc/init.d/php-fpm /etc/rc0.d/K20php-fpm
+ln -s /etc/init.d/php-fpm /etc/rc1.d/K20php-fpm
+ln -s /etc/init.d/php-fpm /etc/rc6.d/K20php-fpm
 wget https://raw.github.com/virtuecenter/server-config-files/master/php-fpm.conf -O /usr/local/etc/php-fpm.conf
 wget https://raw.github.com/virtuecenter/server-config-files/master/php.ini -O /usr/local/lib/php.ini
 wget https://raw.github.com/virtuecenter/server-config-files/master/jetty -O /etc/default/jetty
