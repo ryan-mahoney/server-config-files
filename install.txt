@@ -118,6 +118,9 @@ pecl install mongo
 #make install
 
 #solr
+# enable this repo in /etc/apt/sources.list "deb http://archive.canonical.com/ lucid partner"
+apt-get install sun-java6-jre sun-java6-plugin sun-java6-jdk
+update-alternatives --config java
 apt-get install solr-jetty
 
 #configuration
