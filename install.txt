@@ -10,9 +10,10 @@ apt-get install nginx
 #php
 cd /usr/local/src
 apt-get install libxml2-dev
-wget http://www.php.net/get/php-5.3.6.tar.gz/from/us2.php.net/mirror -O php-5.3.6.tar.gz
-tar xzf ./php-5.3.6.tar.gz
-cd ./php-5.3.6
+wget http://www.php.net/get/php-5.4.6.tar.gz/from/us2.php.net/mirror -O php-5.3.6.tar.gz
+wget http://downloads.php.net/stas/php-5.4.0RC6.tar.gz -O php-5.4.0RC6.tar.gz
+tar xzf ./php-5.4.0RC6.tar.gz
+cd ./php-5.4.0RC6
 ./configure --enable-fpm
 make
 make install
@@ -40,7 +41,14 @@ ln -s /usr/lib32/libjpeg.so /usr/lib/
 ln -s /usr/lib32/libpng.so /usr/lib/
 ln -s /usr/lib32/libfreetype.so /usr/lib/
 phpize
-./configure --with-jpeg-dir=/usr/lib/ --with-png-dir=/usr/lib/ --with-freetype-dir=/usr/lib/
+./configure --with-jpeg-dir=/usr/ --with-png-dir=/usr/lib/ --with-freetype-dir=/usr/lib/
+make
+make install
+
+cd ../openssl
+mv ./config0.m4 ./config.m4
+phpize
+./configure
 make
 make install
 
@@ -122,6 +130,8 @@ pecl install mongo
 apt-get install sun-java6-jre sun-java6-plugin sun-java6-jdk
 update-alternatives --config java
 apt-get install solr-jetty
+ln -s /usr/share/java/lucene-memory-2.9.2.jar /usr/share/solr/WEB-INF/lib/
+ln -s /usr/share/java/lucene-memory.jar /usr/share/solr/WEB-INF/lib/
 
 #configuration
 wget https://raw.github.com/virtuecenter/server-config-files/master/fastcgi_params -O /etc/nginx/fastcgi_params
